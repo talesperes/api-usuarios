@@ -1,0 +1,20 @@
+{
+  "users": {
+    "data": [
+      {
+        "name": "Tales",
+        "birthDate": "15/01/2000",
+        "phone": "(19)1234-5678",
+        "email": "email@email.com.br",
+        "cpf": "15698465481"
+      },
+      {
+        "name": "João",
+        "birthDate": "05/09/1998",
+        "phone": "(19)1234-5678",
+        "email": "email@email.com.br",
+        "cpf": "98354916884"
+      }
+    ]
+  }
+}
