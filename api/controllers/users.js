@@ -1,6 +1,7 @@
 module.exports = app => {
-    const usersDB = app.data.users;
-    const controller = {};
+  const { validator } = require('../validation');
+  const usersDB = app.data.users;
+  const controller = {};
 
     const { users: usersMock } = usersDB;
   
@@ -9,7 +10,6 @@ module.exports = app => {
     controller.getUser = (req, res) => {
 
         const { cpf } = req.params;
-
         const foundUser = usersMock.data.find(user => user.cpf == cpf)
 
         if(foundUser) {
@@ -23,23 +23,34 @@ module.exports = app => {
 
     }
 
-    controller.addUser = (req, res) => {
+    controller.addUser = async (req, res, next) => {
 
-        console.log(req.body);
+      try{
 
-        usersMock.data.push({
-            name: req.body.name,
-            birthDate: req.body.birthDate,
-            phone: req.body.phone,
-            email: req.body.email,
-            cpf: req.body.cpf
-        });
-    
-        res.status(201).json(usersMock);
+        const { cpf } = req.body;
+        const foundUser = usersMock.data.find(user => user.cpf === cpf)
+
+        if(foundUser) {
+          res.status(200).json({
+            message: 'Esse usuário já esta cadastrado',
+            success: false
+          })
+        }
+        else {
+          const user = await validator.validateAsync(req.body);
+          usersMock.data.push(user);
+          res.status(200).json(usersMock);
+        }
+        
+      } catch (error) {
+        if (error.isJoi === true ) error.status = 422 && res.send(error.message)
+        next(error)
+      }
+  
     };
 
     controller.removeUser = (req, res) => {
-
+Z
         const { cpf } = req.params;
     
         const foundUserIndex = usersMock.data.findIndex(user => user.cpf === cpf);
