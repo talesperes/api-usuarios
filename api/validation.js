@@ -36,7 +36,8 @@ const validateCpf = cpf => {
 const validator = Joi.object({
     name: Joi.string()
         .alphanum()
-        .min(2)
+        .min(3)
+        .min(50)
         .required(),
 
     birthDate: Joi.date()
