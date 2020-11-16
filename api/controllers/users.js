@@ -40,7 +40,6 @@ module.exports = app => {
 
     controller.removeUser = (req, res) => {
 
-        
         const { cpf } = req.params;
     
         const foundUserIndex = usersMock.data.findIndex(user => user.cpf === cpf);
