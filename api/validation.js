@@ -64,6 +64,9 @@ const validator = Joi.object({
         })
         .required(),
     
+    password: Joi.string()
+            .required(),
+    
 })
 
 module.exports = {

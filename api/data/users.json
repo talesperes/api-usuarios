@@ -6,14 +6,16 @@
         "birthDate": "01/15/2000",
         "phone": "(19)1234-5678",
         "email": "email@email.com.br",
-        "cpf": "15698465481"
+        "cpf": "15845345081",
+        "password": "123"
       },
       {
         "name": "João",
         "birthDate": "05/09/1998",
         "phone": "(19)1234-5678",
         "email": "email@email.com.br",
-        "cpf": "98354916884"
+        "cpf": "28634220060",
+        "password": "321"
       }
     ]
   }
