@@ -12,8 +12,19 @@ Basta rodar o script abaixo para subir a aplicação local na sua maquina na por
 npm start
 ```
 
-### GET/POST/DELETE
+## Requisições
+
+#### Recupera todos usuários cadastrados / insere um novo usuário [GET | POST]
+```
+/api/v1/users
+```
+#### Recupera/deleta um usuário pelo CPF [GET | DELETE]
 
 ```
-http://localhost:8080/api/v1/users
+/api/v1/users/:cpf
+```
+#### Realiza login para gerar token de autenticação [POST]
+
+```
+/api/v1/login
 ```
