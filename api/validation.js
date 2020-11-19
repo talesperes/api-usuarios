@@ -37,7 +37,7 @@ const validator = Joi.object({
     name: Joi.string()
         .alphanum()
         .min(3)
-        .min(50)
+        .max(50)
         .required(),
 
     birthDate: Joi.date()
