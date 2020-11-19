@@ -17,8 +17,8 @@ module.exports = app => {
   }
   
   app.route('/api/v1/users')
-    .get(controller.listUsers)
-    .post(controller.addUser)
+    .get(verifyJWT, controller.listUsers)
+    .post(verifyJWT, controller.addUser)
 
   app.route('/api/v1/users/:cpf')
     .delete(verifyJWT, controller.removeUser)
