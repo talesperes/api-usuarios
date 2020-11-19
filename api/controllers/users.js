@@ -1,6 +1,7 @@
 module.exports = app => {
   require("dotenv-safe").config();
   const { validator } = require('../validation');
+  const db = require('../db');
   const jwt = require('jsonwebtoken');
   const usersDB = app.data.users;
   const controller = {};
@@ -10,6 +11,7 @@ module.exports = app => {
     controller.listUsers = (req, res, next) => {
       res.status(200).json(usersDB);
     }
+
     controller.getUser = (req, res) => {
 
         const { cpf } = req.params;
@@ -40,9 +42,16 @@ module.exports = app => {
           })
         }
         else {
+
+          const userModel = db.Mongoose.model('usuario', db.UserSchema);
           const user = await validator.validateAsync(req.body);
-          usersMock.data.push(user);
-          res.status(200).json(usersMock);
+          const newUser = new userModel(user);
+
+          newUser.save()
+          .then(data => {
+            res.status(200).json(data);
+          })
+          
         }
         
       } catch (error) {
