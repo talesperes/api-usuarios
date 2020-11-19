@@ -2,7 +2,7 @@
 
 ## Sobre
 
-Projeto desenvolvido para a Paketá Academy, utilizando NodeJS e Express afim de criar uma API RESTful para cadastro de usuários
+Projeto desenvolvido para a Paketá Academy, utilizando NodeJS e Express afim de criar uma API RESTful para cadastro de usuários em um banco de dados MongoDB.
 
 ## Scripts
 
